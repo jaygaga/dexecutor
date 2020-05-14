@@ -18,10 +18,10 @@ import Dexecutor from "https://raw.githubusercontent.com/denjucks/dexecutor/mast
 
 // Creating the query executor client
 let dexecutor = new Dexecutor({
-	client: "sqlite3",
-	connection: {
-		filename: "test.db"
-	}
+    client: "sqlite3",
+    connection: {
+        filename: "test.db"
+    }
 });
 
 // Opening the connection
@@ -43,15 +43,15 @@ import Dexecutor from "https://raw.githubusercontent.com/denjucks/dexecutor/mast
 const client = "sqlite3";
 
 let dex = new Dex({
-	client: client
+    client: client
 });
 
 // Creating the query executor
 let dexecutor = new Dexecutor({
-	client: client,
-	connection: {
-		filename: "test.db"
-	}
+    client: client,
+    connection: {
+        filename: "test.db"
+    }
 });
 
 
@@ -63,7 +63,7 @@ let sqlQuery;
 
 // CREATE TABLE Query
 sqlQuery = dex.schema.createTable("people", (table) => {
-	table.string('name');
+    table.string('name');
 }).toString();
 
 await dexecutor.execute(sqlQuery);
@@ -71,23 +71,23 @@ await dexecutor.execute(sqlQuery);
 
 // INSERT Query
 sqlQuery = dex.queryBuilder()
-	.insert([
-		{name: "hello"},
-		{name: "deno"},
-		{name: "world"},
-	])
-	.into("people")
-	.toString();
+    .insert([
+        {name: "hello"},
+        {name: "deno"},
+        {name: "world"},
+    ])
+    .into("people")
+    .toString();
 
 await dexecutor.execute(sqlQuery);
 
 
 // SELECT Query
 let result = await dexecutor.execute(
-	dex.queryBuilder()
-		.select("*")
-		.from("people")
-		.toString()
+    dex.queryBuilder()
+        .select("*")
+        .from("people")
+        .toString()
 );
 
 console.log(result);
@@ -112,18 +112,18 @@ import Dexecutor from "https://raw.githubusercontent.com/denjucks/dexecutor/mast
 const client = "mysql";
 
 let dex = new Dex({
-	client: client
+    client: client
 });
 
 // Creating the query executor
 let dexecutor = new Dexecutor({
-	client: client,
-	connection: {
-		host: "your_hostname",
-		user: "your_username",
-		password: "your_password",
-		port: 3306,
-		database: "your_database_name",
+    client: client,
+    connection: {
+        host: "your_hostname",
+        user: "your_username",
+        password: "your_password",
+        port: 3306,
+        database: "your_database_name",
 });
 ```
 
@@ -138,17 +138,17 @@ import Dexecutor from "https://raw.githubusercontent.com/denjucks/dexecutor/mast
 const client = "postgres";
 
 let dex = new Dex({
-	client: client
+    client: client
 });
 
 // Creating the query executor
 let dexecutor = new Dexecutor({
-	client: client,
-	connection: {
-		host: "your_hostname",
-		user: "your_username",
-		password: "your_password",
-		port: 5432,
-		database: "your_database_name",
+    client: client,
+    connection: {
+        host: "your_hostname",
+        user: "your_username",
+        password: "your_password",
+        port: 5432,
+        database: "your_database_name",
 });
 ```
